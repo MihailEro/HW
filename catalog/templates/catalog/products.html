@@ -1,0 +1,23 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row text-center">
+        {% for object in object_list %}
+        <div class="col-3">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">{{ object.product_name }}</h4>
+                </div>
+                <a class="btn btn-success" href="{% url 'catalog:view_product' object.pk %}">Описание</a>
+                <a class="btn btn-warning" href="{% url 'catalog:update_product' object.pk %}">Редактировать</a>
+                <a class="btn btn-danger" href="{% url 'catalog:delete_product' object.pk %}">Удалить</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+<div class="row text-center">
+    <div class="col-12 mb-5">
+        <a class="btn btn-primary" href="{% url 'catalog:product_create' %}">Добавить продукт</a>
+    </div>
+</div>
+{% endblock %}
